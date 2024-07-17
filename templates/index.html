@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAG Chatbot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Digital Maternal Mental Health</h1>
+        <form method="POST">
+            <label for="query">Enter your prompt:</label>
+            <input type="text" id="query" name="query" value="{{ request.form.query }}" required>
+            <button type="submit">Submit</button>
+        </form>
+        {% if response %}
+        <div class="chat-box">
+            <div class="query">
+                <h2>Your Query:</h2>
+                <p>{{ request.form.query }}</p>
+            </div>
+            <div class="response">
+                <h2>Response:</h2>
+                <p>{{ response }}</p>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
